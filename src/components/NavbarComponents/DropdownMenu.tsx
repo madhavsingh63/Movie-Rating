@@ -1,26 +1,25 @@
 "use client";
 import { useState } from "react";
 import {
-  FiSearch,
+  FiBriefcase,
   FiFilm,
   FiMonitor,
-  FiUsers,
-  FiBriefcase,
+  FiSearch,
   FiTag,
-  FiChevronDown,
+  FiUsers
 } from "react-icons/fi";
 import { TiArrowSortedDown, TiArrowSortedUp } from "react-icons/ti";
 
 const menuItems = [
   { icon: <FiSearch />, label: "All" },
   { icon: <FiFilm />, label: "Titles" },
-  { icon: <FiMonitor />, label: "TV episodes" },
+  { icon: <FiMonitor />, label: "TV" },
   { icon: <FiUsers />, label: "Celebs" },
   { icon: <FiBriefcase />, label: "Companies" },
   { icon: <FiTag />, label: "Keywords" },
 ];
 
-export default function DropdownMenu() {
+ const DropdownMenu = () => {
   const [open, setOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState("All");
 
@@ -28,7 +27,7 @@ export default function DropdownMenu() {
     <div className="relative inline-block text-left ">
       <button
         onClick={() => setOpen(!open)}
-        className="inline-flex min-w-fit justify-between  items-center   text-black px-3 gap-1  rounded-md text-sm font-bold "
+        className="flex justify-between  items-center   text-black px-2 sm:px-3  rounded-md text-sm font-bold "
       >
         {selectedItem}
         {open ? (
@@ -39,7 +38,7 @@ export default function DropdownMenu() {
       </button>
 
       {open && (
-        <div className="absolute mt-2 w-56 bg-gray-900 text-white shadow-lg  z-50">
+        <div className="absolute mt-2 w-56 bg-[#121212] text-white shadow-lg  z-50">
           <ul className="py-1">
             {menuItems.map((item, index) => (
               <li
@@ -59,3 +58,4 @@ export default function DropdownMenu() {
     </div>
   );
 }
+export default DropdownMenu;

@@ -1,22 +1,27 @@
-import React from 'react';
+import React from "react";
+import QR from "@/assests/qr.png";
 import {
   FaTiktok,
   FaInstagram,
   FaXTwitter,
   FaYoutube,
   FaFacebookF,
-} from 'react-icons/fa6';
+} from "react-icons/fa6";
+import Image from "next/image";
+import { RiShareBoxLine } from "react-icons/ri";
 
 const Footer = () => {
   return (
     <footer className=" w-full bg-black text-white text-sm py-10 px-4">
-      <div className="max-w-[1280px] mx-auto  flex flex-col gap-8">
+      <div className="max-w-[900px] mx-auto  flex flex-col gap-8 ">
         {/* Top Section */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 ">
           {/* Social Media Container */}
-          <div className="border border-gray-600 rounded-md p-5 w-full md:w-1/2">
-            <p className="font-bold text-lg mb-3">Follow IMDb on social</p>
-            <div className="flex gap-5 text-xl">
+          <div className="border border-gray-600 rounded-md p-5 w-full  md:w-[50%]">
+            <p className="font-bold text-xl mb-3 text-center">
+              Follow IMDb on social
+            </p>
+            <div className="flex items-center gap-5 justify-evenly text-xl">
               <FaTiktok />
               <FaInstagram />
               <FaXTwitter />
@@ -26,38 +31,48 @@ const Footer = () => {
           </div>
 
           {/* QR Code Container */}
-          <div className="border border-gray-600 rounded-md p-5 w-full md:w-1/2 flex flex-col items-start md:items-start">
-            <p className="font-bold text-lg mb-1">Get the IMDb App</p>
-            <p className="text-sm text-gray-300 mb-3">For Android and iOS</p>
-            <img
-              src="/qr.png" // Make sure this image exists in public/
-              alt="QR Code"
-              className="w-20 h-20 object-contain"
-            />
+          <div className="border border-gray-600 rounded-md w-full  md:w-[50%] flex items-center justify-between">
+            <div className="py-5 pl-5">
+              <p className="font-bold text-xl mb-3">Get the IMDb App</p>
+              <p className="text-sm text-gray-300 ">For Android and iOS</p>
+            </div>
+            <div className="rounded-md overflow-hidden">
+              <Image
+                src={QR}
+                alt="QR Code"
+                className="w-22 h-22 object-contain pr-5 "
+              />
+            </div>
           </div>
         </div>
 
         {/* Link Section */}
-        <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-gray-300 text-sm">
+        
+        <div className="flex flex-wrap justify-center gap-x-6  text-gray-300">
           {[
-            'Help',
-            'Site Index',
-            'IMDbPro',
-            'Box Office Mojo',
-            'License IMDb Data',
-            'Press Room',
-            'Advertising',
-            'Jobs',
-            'Conditions of Use',
-            'Privacy Policy',
-            'Your Ads Privacy Choices',
+            "Help",
+            "Site Index",
+            "IMDbPro",
+            "Box Office Mojo",
+            "License IMDb Data",
           ].map((text, index) => (
             <a
               key={index}
               href="#"
-              className="hover:underline text-center whitespace-nowrap"
+              className="hover:underline text-center text-[1rem] flex items-center justify-center"
             >
-              {text}
+              {text}<RiShareBoxLine />
+            </a>
+          ))}
+        </div>
+        <div className="flex flex-wrap justify-center gap-x-6  text-gray-300">
+          {footerLinks.map((link, index) => (
+            <a
+              key={index}
+              href="#"
+              className="hover:underline text-center text-[1.2rem] flex items-center justify-center"
+            >
+              {link}
             </a>
           ))}
         </div>
@@ -77,3 +92,12 @@ const Footer = () => {
 };
 
 export default Footer;
+
+const footerLinks = [
+  "Press Room",
+  "Advertising",
+  "Jobs",
+  "Conditions of Use",
+  "Privacy Policy",
+  "Your Ads Privacy Choices",
+];
